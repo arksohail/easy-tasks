@@ -11,15 +11,17 @@ import { Component, computed, Input, signal } from '@angular/core';
 })
 export class UserComponent {
 
+  @Input({required: true}) avatar!: string;
+  @Input({required: true}) name!: string;
   // selectedUsers = signal(DUMMY_USERS[randomIndex]);
   // imagePath = computed(() => 'assets/users/' + this.selectedUsers().avatar); // Using Signals to read computed values and listen to change detection
 
   // Old Way of using angular's Change Detection Mechanism "zone"
-  // get imagePath(): string {
-  //   return 'assets/users/' + this.avatar;
-  // }
+  get imagePath(): string {
+    return 'assets/users/' + this.avatar;
+  }
 
-  // onSelectUser(): void {
-  //   console.log("Clicked");
-  // }
+  onSelectUser(): void {
+    console.log("Clicked");
+  }
 }
