@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 
 const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
@@ -10,14 +10,16 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 })
 export class UserComponent {
 
-  selectedUsers = DUMMY_USERS[randomIndex];
+  selectedUsers = signal(DUMMY_USERS[randomIndex]);
+  imagePath = computed(() => 'assets/users/' + this.selectedUsers().avatar); // Using Signals to read computed values and listen to change detection
 
-  get imagePath(): string {
-    return 'assets/users/' + this.selectedUsers.avatar
-  }
+  // Old Way of using angular's Change Detection Mechanism "zone"
+  // get imagePath(): string {
+  //   return 'assets/users/' + this.selectedUsers().avatar;
+  // }
 
-  onSelectUser():void {
+  onSelectUser(): void {
     const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
-    this.selectedUsers = DUMMY_USERS[randomIndex];
+    this.selectedUsers.set(DUMMY_USERS[randomIndex]);
   }
 }
