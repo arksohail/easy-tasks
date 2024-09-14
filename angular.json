@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "01-starting-project"
+  "defaultProject": "01-starting-project",
+  "cli": {
+    "analytics": false
+  }
 }
