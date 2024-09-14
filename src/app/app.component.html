@@ -9,8 +9,9 @@
   <ul id="users">
     @for (user of users; track user.id) {
       <li>
-        <app-user [avatar]="user.avatar" [name]="user.name"/>
+        <app-user [avatar]="user.avatar" [name]="user.name" [id]="user.id" (select)="onSelectUser($event)"/>
       </li>
     }
   </ul>
+  TASK OF THE USER
 </main>

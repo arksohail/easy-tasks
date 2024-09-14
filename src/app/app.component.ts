@@ -14,4 +14,7 @@ export class AppComponent {
   title = '01-starting-project';
   users = DUMMY_USERS;
   
+  onSelectUser(id:string) {
+    console.log("Selected with User ID: ", id);
+  }
 }
