@@ -1,14 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from '../task/task.component';
-
-
-export interface Task {
-  id: string;
-  userId: string;
-  title: string;
-  summary: string;
-  dueDate: string;
-}
+import { UserTask } from '../interface/user-task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -21,7 +13,7 @@ export class TasksComponent {
   @Input({ required: true }) name?: string;
   @Input({ required: true }) userId?: string;
 
-  tasks: Task[] = [
+  tasks: UserTask[] = [
     {
       id: 't1',
       userId: 'u1',
@@ -47,7 +39,7 @@ export class TasksComponent {
     },
   ]
 
-  get selectedUserTasks(): Task[] {
+  get selectedUserTasks(): UserTask[] {
     return this.tasks.filter((task) => task.userId === this.userId);
   }
 

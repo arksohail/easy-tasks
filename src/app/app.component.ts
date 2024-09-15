@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
-import { DUMMY_USERS } from './dummy-users';
+import { USERS } from './dummy-users';
 import { TasksComponent } from './tasks/tasks.component';
 
 @Component({
@@ -12,7 +12,7 @@ import { TasksComponent } from './tasks/tasks.component';
   imports: [HeaderComponent, UserComponent, TasksComponent]
 })
 export class AppComponent {
-  users = DUMMY_USERS;
+  users = USERS;
   selectedUserId?: string;
 
   get selectedUser() {

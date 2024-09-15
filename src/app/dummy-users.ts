@@ -1,4 +1,6 @@
-export const DUMMY_USERS = [
+import { User } from "./interface/user.model";
+
+export const USERS: User[] = [
   {
     id: 'u1',
     name: 'Jasmine Washington',
