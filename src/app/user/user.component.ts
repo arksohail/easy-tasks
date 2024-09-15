@@ -11,9 +11,14 @@ import { Component, computed, Input, signal, input, Output, EventEmitter, output
 })
 export class UserComponent {
 
-  @Input({required: true}) avatar!: string;
-  @Input({required: true}) name!: string;
-  @Input({required: true}) id!: string;
+  // @Input({required: true}) avatar!: string;
+  // @Input({required: true}) name!: string;
+  // @Input({required: true}) id!: string;
+  @Input({required: true}) user!: {
+    id: string,
+    avatar: string,
+    name: string
+  }
   @Output() select = new EventEmitter();
   
 
@@ -29,10 +34,10 @@ export class UserComponent {
 
   // Old Way of using angular's Change Detection Mechanism "zone"
   get imagePath(): string {
-    return 'assets/users/' + this.avatar;
+    return 'assets/users/' + this.user.avatar;
   }
 
   onSelectUser(): void {
-    this.select.emit(this.id);
+    this.select.emit(this.user.id);
   }
 }
