@@ -55,4 +55,8 @@ export class TasksComponent {
     console.log("Complete Taks Clicked!", id);
     this.tasks = this.tasks.filter((task) => task.id !== id);
   }
+
+  onCancelAddTask() {
+    this.isAddTask = false;
+  }
 }
