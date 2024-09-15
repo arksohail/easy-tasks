@@ -7,28 +7,15 @@
 <app-header />
 <main>
   <ul id="users">
-    <!-- Modern Method of using Control Flow -->
-    <!-- @for (user of users; track user.id) {
+    @for (user of users; track user.id) {
     <li>
       <app-user [user]="user" (select)="onSelectUser($event)" />
     </li>
-    } -->
-    <!-- Legacy use of Structureal Directory instead of Control Flow -->
-    <li *ngFor="let user of users">
-      <app-user [user]="user" (select)="onSelectUser($event)" />
-    </li>
+    }
   </ul>
-  <!-- Modern Method of using Control Flow -->
-  <!-- @if(selectedUser) {
-    <app-tasks [name]="selectedUser.name" />
+  @if(selectedUser) {
+  <app-tasks [name]="selectedUser.name" />
   } @else {
-    <p id="fallback">Select a user to see their tasks...</p>
-  } -->
-  <!-- Legachy Method of using Structural Directory -->
-  <app-tasks *ngIf="selectedUser; else fallback" [name]="selectedUser.name" />
-  <ng-template #fallback>
-    <p id="fallback">Select a user to see their tasks...</p>
-  </ng-template>
-  
-   
+  <p id="fallback">Select a user to see their tasks...</p>
+  }
 </main>
