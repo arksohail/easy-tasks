@@ -46,4 +46,9 @@ export class TasksComponent {
   addTask() {
     console.log("Add Taks Clicked!")
   }
+
+  onCompleteTask(id: string) {
+    console.log("Complete Taks Clicked!", id);
+    this.tasks = this.tasks.filter((task) => task.id !== id);
+  }
 }
