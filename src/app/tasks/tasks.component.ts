@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { TaskComponent } from '../task/task.component';
+import { TaskComponent } from './task/task.component';
 import { NewTaskData, UserTask } from '../interface/user-task.model';
 import { NewTaskComponent } from "./new-task/new-task.component";
+import { TaskService } from './task.service';
 
 @Component({
   selector: 'app-tasks',
@@ -16,44 +17,18 @@ export class TasksComponent {
 
   isAddTask = false;
 
-  tasks: UserTask[] = [
-    {
-      id: 't1',
-      userId: 'u1',
-      title: 'Master Angular',
-      summary:
-        'Learn all the basic and advanced features of Angular & how to apply them.',
-      dueDate: '2025-12-31',
-    },
-    {
-      id: 't2',
-      userId: 'u3',
-      title: 'Build first prototype',
-      summary: 'Build a first prototype of the online shop website',
-      dueDate: '2024-05-31',
-    },
-    {
-      id: 't3',
-      userId: 'u3',
-      title: 'Prepare issue template',
-      summary:
-        'Prepare and describe an issue template which will help with project management',
-      dueDate: '2024-06-15',
-    },
-  ]
+  constructor(private taskService: TaskService) {}
 
   get selectedUserTasks(): UserTask[] {
-    return this.tasks.filter((task) => task.userId === this.userId);
+    return this.taskService.getUserTasks(this.userId!);
   }
 
   onStartAddTask() {
-    console.log("Add Taks Clicked!");
     this.isAddTask = true;
   }
 
   onCompleteTask(id: string) {
-    console.log("Complete Taks Clicked!", id);
-    this.tasks = this.tasks.filter((task) => task.id !== id);
+    this.taskService.removeTask(id);
   }
 
   onCancelAddTask() {
@@ -61,17 +36,8 @@ export class TasksComponent {
   }
 
   onAddTask(task: NewTaskData) {
-    this.tasks.unshift({
-      id: this.generateId,
-      userId: this.userId!,
-      title: task.title,
-      summary: task.summary,
-      dueDate: task.dueDate
-    });
+    this.taskService.addTask(task, this.userId!);
     this.isAddTask = false;
   }
 
-  get generateId() {
-    return 't' + this.tasks.length;
-  }
 }

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { UserTask } from '../interface/user-task.model';
-import { CardComponent } from "../shared/card/card.component";
+import { UserTask } from '../../interface/user-task.model';
+import { CardComponent } from "../../shared/card/card.component";
 import { DatePipe } from '@angular/common';
 
 @Component({
