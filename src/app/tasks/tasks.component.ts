@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from '../task/task.component';
-import { UserTask } from '../interface/user-task.model';
+import { NewTaskData, UserTask } from '../interface/user-task.model';
 import { NewTaskComponent } from "./new-task/new-task.component";
 
 @Component({
@@ -58,5 +58,20 @@ export class TasksComponent {
 
   onCancelAddTask() {
     this.isAddTask = false;
+  }
+
+  onAddTask(task: NewTaskData) {
+    this.tasks.unshift({
+      id: this.generateId,
+      userId: this.userId!,
+      title: task.title,
+      summary: task.summary,
+      dueDate: task.dueDate
+    });
+    this.isAddTask = false;
+  }
+
+  get generateId() {
+    return 't' + this.tasks.length;
   }
 }

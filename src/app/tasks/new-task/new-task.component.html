@@ -1,7 +1,7 @@
 <div class="backdrop" (click)="onCancelAddTask()"></div>
 <dialog open>
   <h2>Add Task</h2>
-  <form>
+  <form (ngSubmit)="onCreateTask()">
     <p>
       <label for="title">Title</label>
       <input [(ngModel)]="eneteredTitle" type="text" id="title" name="title" />
