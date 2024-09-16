@@ -37,7 +37,7 @@ export class TaskService {
 
   addTask(task: NewTaskData, userId: string) {    
     this.tasks.unshift({
-      id: this.generateId,
+      id: new Date().getTime().toString(),
       userId: userId,
       title: task.title,
       summary: task.summary,
@@ -47,9 +47,5 @@ export class TaskService {
 
   removeTask(id: string) {
     this.tasks = this.tasks.filter((task) => task.id !== id);
-  }
-
-  get generateId() {
-    return 't' + this.tasks.length;
   }
 }
