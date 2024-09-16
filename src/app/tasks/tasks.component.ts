@@ -27,10 +27,6 @@ export class TasksComponent {
     this.isAddTask = true;
   }
 
-  onCompleteTask(id: string) {
-    this.taskService.removeTask(id);
-  }
-
   onCloseAddTask() {
     this.isAddTask = false;
   }

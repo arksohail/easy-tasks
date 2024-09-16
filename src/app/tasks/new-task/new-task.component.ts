@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NewTaskData } from 'src/app/interface/user-task.model';
 import { TaskService } from '../task.service';
 
 @Component({
@@ -12,13 +11,13 @@ import { TaskService } from '../task.service';
 })
 export class NewTaskComponent {
   @Output() close = new EventEmitter<void>();
-  @Input({required: true}) userId?: string;
+  @Input({ required: true }) userId?: string;
 
   eneteredTitle = '';
   eneteredSummary = '';
   eneteredDate = '';
 
-  constructor(private taskService: TaskService ) {}
+  constructor(private taskService: TaskService) { }
 
   onCancelAddTask() {
     this.close.emit();
